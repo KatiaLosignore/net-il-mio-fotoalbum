@@ -138,3 +138,13 @@
 11-10-2023 19:01:56 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
 11-10-2023 19:02:19 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
 11-10-2023 19:02:31 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:03:02 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:04:25 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:04:27 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:06:21 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:07:55 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:09:55 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:10:03 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:10:44 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:11:58 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+11-10-2023 19:16:45 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
