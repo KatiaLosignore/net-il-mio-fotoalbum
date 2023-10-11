@@ -20,6 +20,18 @@ container {
 }
 
 
+.logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 50px;
+    color: rgb(31,162,225);
+}
+
 main {
     height: calc(100% - 100px - 100px);
 }
