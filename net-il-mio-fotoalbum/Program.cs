@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using net_il_mio_fotoalbum.CustomLoggers;
 using net_il_mio_fotoalbum.Database;
 using System.Text.Json.Serialization;
 
@@ -19,6 +20,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+
+// Righe per la (Dependency Injection)
+builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
 
 var app = builder.Build();
 
