@@ -23,6 +23,8 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 // Righe per la (Dependency Injection)
 builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
+builder.Services.AddScoped<FotoalbumContext, FotoalbumContext>();
+
 
 var app = builder.Build();
 
@@ -45,7 +47,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Fotoalbum}/{action=Index}/{id?}");
 
 app.MapRazorPages();
 
