@@ -1,0 +1,46 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/img/sfondo-foto.jpg');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+header nav {
+    height: 100px;
+}
+
+a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.check-color{
+    color: blue;
+}
+
+.login {
+    font-size: 36px;
+}
+
+.text-login {
+    color: blue;
+}
+
+.page {
+    font-size: 50px;
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+.login-account {
+    display: none;
+}
