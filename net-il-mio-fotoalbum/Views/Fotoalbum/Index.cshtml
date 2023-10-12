@@ -33,7 +33,7 @@ else
                     <input id="js_search_box" type="text" class="form-control my-5 search-input" placeholder="Cerca per titolo...">
                     <p class="back-button mt-5">
                         <a class="btn btn-primary" href="@Url.Action("Index", "Fotoalbum")" role="button">
-                            <b>Azzera filtro</b>
+                            <b>Azzera filtro ricerca</b>
                         </a>
                     </p>
                 </div>
@@ -68,7 +68,7 @@ else
                     @foreach (Photo photo in Model)
                     {
                         <tr>
-                            <td><img width="300" class="rounded-3" src="@photo.ImageUrl" alt="@photo.Title" /></td>
+                            <td><img width="300" class="rounded-3" src="@photo.ImageSrc" alt="@photo.Title" /></td>
                             <td>@photo.Title</td>
                             <td>@photo.Description</td>
                             <td>
@@ -182,7 +182,7 @@ else
 
                                `
                                 <div class="category-name">
-                                   <h3 class=text-white text-center category fw-bold> Categoria associata di foto: ${category.name}</h3>
+                                   <h3 class=text-white text-center category fw-bold> Categoria di foto associata: ${category.name}</h3>
                                </div>
                                `
 
@@ -212,12 +212,7 @@ else
 
 
 
-
-
-
-
-
-        // modale per eliminazione elemnto con conferma
+        // modale per eliminazione elemento con conferma
 
         const deleteButtons = document.querySelectorAll('.form_delete_pizza button[type="submit"]');
 

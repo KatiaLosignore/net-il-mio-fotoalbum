@@ -16,33 +16,39 @@
             <div class="d-flex align-items-center">
                 <h1 class="mt-5 mb-4">Modifica foto</h1>
             </div>
-            <form asp-controller="Fotoalbum" asp-action="Update" asp-route-id="@Model.Photo.Id" method="post">
+            <form asp-controller="Fotoalbum" asp-action="Update" asp-route-id="@Model.Photo.Id" enctype="multipart/form-data" method="post">
                 @Html.AntiForgeryToken()
                 <input type="hidden" asp-for="Photo.Id" />
                 <div class="mb-3">
-                    <label asp-for="Photo.Title" class="form-label"><b>Titolo:</b></label>
+                    <label asp-for="Photo.Title" class="form-label text"><b>Titolo:</b></label>
                     <div>
                         <input asp-for="Photo.Title" class="d-block w-100" />
                         <span asp-validation-for="Photo.Title" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Photo.Description" class="form-label"><b>Descrizione:</b> </label>
+                    <label asp-for="Photo.Description" class="form-label text"><b>Descrizione:</b> </label>
                     <div>
                         <textarea asp-for="Photo.Description" rows="10" class="d-block w-100"></textarea>
                         <span asp-validation-for="Photo.Description" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Photo.ImageUrl" class="form-label"><b>Immagine:</b> </label>
+                    <label asp-for="Photo.ImageUrl" class="form-label text"><b>URL Immagine:</b> </label>
                     <div>
                         <input asp-for="Photo.ImageUrl" class="d-block w-100" />
                         <span asp-validation-for="Photo.ImageUrl" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="mb-3">
+                    <img src="@Model.Photo.ImageSrc" class="d-block w-50 mb-3">
+                    <label asp-for="ImageFormFile" class="form-label text">File Immagine</label>
+                    <input type="file" asp-for="ImageFormFile" />
+                    <span asp-validation-for="ImageFormFile" class="text-error"></span>
+                </div>
 
                 <div class="mb-3">
-                    <strong>Categorie: </strong>
+                    <strong class="text">Categorie: </strong>
                     <select asp-for="SelectedCategoriesId"
                             multiple="multiple"
                             size="10"

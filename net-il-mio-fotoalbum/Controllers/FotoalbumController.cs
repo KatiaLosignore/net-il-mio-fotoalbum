@@ -121,6 +121,8 @@ namespace net_il_mio_fotoalbum.Controllers
                 }
             }
 
+            //Richiamo il metodo scritto in basso
+            this.SetImageFileFromFormFile(newPhoto);
 
             _myDatabase.Photos.Add(newPhoto.Photo);
             _myDatabase.SaveChanges();
@@ -217,6 +219,13 @@ namespace net_il_mio_fotoalbum.Controllers
                     }
                 }
 
+                if (data.ImageFormFile != null)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    data.ImageFormFile.CopyTo(stream);
+                    photoToUpdate.ImageFile = stream.ToArray();
+                }
+
                 _myDatabase.SaveChanges();
 
                 return RedirectToAction("Details", "Fotoalbum", new { id = photoToUpdate.Id });
@@ -247,6 +256,20 @@ namespace net_il_mio_fotoalbum.Controllers
             {
                 return NotFound("La foto da eliminare non è stata trovata!");
             }
+
+        }
+
+
+        private void SetImageFileFromFormFile(PhotoFormModel formData)
+        {
+            if (formData.ImageFormFile == null)
+            {
+                return;
+            }
+
+            MemoryStream stream = new MemoryStream();
+            formData.ImageFormFile.CopyTo(stream);
+            formData.Photo.ImageFile = stream.ToArray();
 
         }
 

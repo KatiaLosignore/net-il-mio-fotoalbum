@@ -7,6 +7,8 @@ namespace net_il_mio_fotoalbum.Models
     {
         public Photo Photo { get; set; }
 
+        public IFormFile? ImageFormFile { get; set; }
+
 
         // Inserisco nuove proprietà per gestire una select multipla nelle viste
         public List<SelectListItem>? Categories { get; set; }
