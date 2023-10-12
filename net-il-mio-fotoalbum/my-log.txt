@@ -246,3 +246,4 @@
 12-10-2023 12:24:01 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
 12-10-2023 12:34:29 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
 12-10-2023 12:34:37 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
+12-10-2023 12:45:05 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index

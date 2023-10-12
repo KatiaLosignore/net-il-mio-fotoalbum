@@ -26,6 +26,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 // Righe per la (Dependency Injection)
 builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
 builder.Services.AddScoped<FotoalbumContext, FotoalbumContext>();
+builder.Services.AddScoped<IRepositoryPhotos, RepositoryPhotos>();
 
 
 var app = builder.Build();
