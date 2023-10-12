@@ -130,6 +130,113 @@ namespace net_il_mio_fotoalbum.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+
+            Photo? photoToEdit = _myDatabase.Photos.Where(photo => photo.Id == id).Include(element => element.Categories).FirstOrDefault();
+
+            if (photoToEdit == null)
+            {
+                return NotFound("La foto che vuoi modificare non è stata trovata");
+            }
+            else
+            {
+
+                List<SelectListItem> selectListItem = new List<SelectListItem>();
+                List<Category> dbcategoryList = _myDatabase.Categories.ToList();
+
+                foreach (Category category in dbcategoryList)
+                {
+                    selectListItem.Add(new SelectListItem
+                    {
+                        Value = category.Id.ToString(),
+                        Text = category.Name,
+                        Selected = photoToEdit.Categories.Any(categoryAssociated => categoryAssociated.Id == category.Id)
+                    });
+
+                }
+
+                PhotoFormModel model
+                  = new PhotoFormModel { Photo = photoToEdit, Categories = selectListItem };
+
+                return View("Update", model);
+
+            }
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, PhotoFormModel data)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                List<SelectListItem> selectListItem = new List<SelectListItem>();
+                List<Category> dbcategoryList = _myDatabase.Categories.ToList();
+
+                foreach (Category category in dbcategoryList)
+                {
+                    selectListItem.Add(new SelectListItem
+                    {
+                        Value = category.Id.ToString(),
+                        Text = category.Name
+                    });
+                }
+
+                data.Categories = selectListItem;
+
+
+                return View("Update", data);
+            }
+
+            Photo? photoToUpdate = _myDatabase.Photos.Where(photo => photo.Id == id).Include(element => element.Categories).FirstOrDefault();
+
+            if (photoToUpdate != null)
+            {
+                photoToUpdate.Categories.Clear();
+
+                photoToUpdate.Title = data.Photo.Title;
+                photoToUpdate.Description = data.Photo.Description;
+                photoToUpdate.ImageUrl = data.Photo.ImageUrl;
+               
+
+                if (data.SelectedCategoriesId != null)
+                {
+                    foreach (string categorySelectedId in data.SelectedCategoriesId)
+                    {
+                        int intCategorySelectedId = int.Parse(categorySelectedId);
+
+                        Category? categoryInDb = _myDatabase.Categories.Where(category => category.Id == intCategorySelectedId).FirstOrDefault();
+
+                        if (categoryInDb != null)
+                        {
+                            photoToUpdate.Categories.Add(categoryInDb);
+                        }
+                    }
+                }
+
+                _myDatabase.SaveChanges();
+
+                return RedirectToAction("Details", "Fotoalbum", new { id = photoToUpdate.Id });
+            }
+            else
+            {
+                return NotFound("Mi dispiace non è stata trovata la foto da aggiornare");
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     }

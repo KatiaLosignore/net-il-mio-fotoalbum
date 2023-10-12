@@ -1,9 +1,73 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = "_LayoutDetails";
 }
 
-@section Style{
-    <link rel="stylesheet" href="~/css/mystyle.css" />
+@section StyleDetails{
+    <link rel="stylesheet" href="~/css/mydetails.css" />
 }
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+@model PhotoFormModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <h1 class="mt-5 mb-4">Modifica foto</h1>
+            </div>
+            <form asp-controller="Fotoalbum" asp-action="Update" asp-route-id="@Model.Photo.Id" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Photo.Id" />
+                <div class="mb-3">
+                    <label asp-for="Photo.Title" class="form-label"><b>Titolo:</b></label>
+                    <div>
+                        <input asp-for="Photo.Title" class="d-block w-100" />
+                        <span asp-validation-for="Photo.Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Photo.Description" class="form-label"><b>Descrizione:</b> </label>
+                    <div>
+                        <textarea asp-for="Photo.Description" rows="10" class="d-block w-100"></textarea>
+                        <span asp-validation-for="Photo.Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Photo.ImageUrl" class="form-label"><b>Immagine:</b> </label>
+                    <div>
+                        <input asp-for="Photo.ImageUrl" class="d-block w-100" />
+                        <span asp-validation-for="Photo.ImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <strong>Categorie: </strong>
+                    <select asp-for="SelectedCategoriesId"
+                            multiple="multiple"
+                            size="10"
+                            class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                            asp-items="@Model.Categories">
+                    </select>
+                </div>
+
+
+                <div class="text-end">
+                    <input type="submit" class="btn btn-small btn btn-secondary fw-bold text-white" value="Modifica Foto">
+                </div>
+
+                <div class="text-start mt-5 mb-2">
+                    <a class="btn btn-primary mt-5" href="@Url.Action("Index", "Fotoalbum")" role="button">
+                        <b>Torna Indietro</b>
+                    </a>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
 
 
