@@ -1,10 +1,64 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = "_LayoutDetails";
 }
 
-@section Style{
-    <link rel="stylesheet" href="~/css/mystyle.css" />
+@section StyleDetails{
+    <link rel="stylesheet" href="~/css/mydetails.css" />
 }
 
+@using net_il_mio_fotoalbum.Models.Database_Models;
 
+@model PhotoFormModel
 
+<div class="container form-group">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mt-5 mb-4">Creazione nuova Foto</h1>
+        </div>
+        <form id="create-form" asp-controller="Fotoalbum" asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Photo.Title" class="form-label text"><b>Titolo:</b> </label>
+                <div>
+                    <input id="input-name" type="text" class="form-control" asp-for="Photo.Title">
+                    <span asp-validation-for="Photo.Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Photo.Description" class="form-label text"><b>Descrizione:</b></label>
+                <div>
+                    <input id="input-description" type="text" class="form-control" asp-for="Photo.Description">
+                    <span asp-validation-for="Photo.Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- select multipla per le Categorie -->
+            <div class="mb-3">
+                <strong class="text">Seleziona Categorie:</strong>
+                <select id="input-categories" asp-for="SelectedCategoriesId"
+                        multiple="multiple"
+                        size="10"
+                        class="form-control mb-2 mr-sm-2 ml-sm-3 leftList"
+                        asp-items="@Model.Categories">
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Photo.ImageUrl" class="form-label text"><b>Immagine:</b></label>
+                <div>
+                    <input id="input-image" type="text" class="form-control" asp-for="Photo.ImageUrl">
+                    <span asp-validation-for="Photo.ImageUrl" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="text-end">
+                <button id="create-button" type="submit" class="btn btn-primary mt-4 mb-5 "><b>Crea nuova foto</b></button>
+            </div>
+            <div class="mt-5">
+                <a class="btn btn-secondary" href="@Url.Action("Index", "Fotoalbum")" role="button">
+                    <b>Torna Indietro</b>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

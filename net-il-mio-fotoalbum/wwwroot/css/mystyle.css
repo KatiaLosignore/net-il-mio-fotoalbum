@@ -71,3 +71,8 @@ footer ul li a{
     color: blue;
     font-size: 20px;
 }
+
+.text {
+    color: blue;
+    font-weight: bold;
+}
