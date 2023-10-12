@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
-    [Authorize(Roles = "USER,ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public class FotoalbumController : Controller
     {
 
