@@ -31,5 +31,26 @@ namespace net_il_mio_fotoalbum.Controllers
 
             return View("Index", photos);
         }
+
+
+        public IActionResult Details(int id)
+        {
+            Photo? foundedElement = _myDatabase.Photos.Where(element => element.Id == id).Include(element => element.Categories).FirstOrDefault();
+
+            if (foundedElement == null)
+            {
+                return NotFound($"La foto con {id} non è stata trovata!");
+            }
+            else
+            {
+                return View("Details", foundedElement);
+            }
+
+        }
+
+
+
+
+
     }
 }

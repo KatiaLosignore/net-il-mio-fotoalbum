@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_LayoutDetails";
 }
+
+@section StyleDetails{
+    <link rel="stylesheet" href="~/css/mydetails.css" />
+}
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model Photo
+
+<div class="container py-3 ms-2">
+    <div class="row detail-photo">
+        <div class="col-12">
+            <div class="d-flex align-items-center">
+                <h1 class="mt-5 mb-5 text">Dettaglio foto</h1>
+            </div>
+            <div class="post-single-image-container mb-4">
+                <img src="@Model.ImageUrl" class="rounded-4 image-detail" alt="@Model.Title">
+            </div>
+            <p class="mt-4">
+                <strong class="text">Titolo:</strong>
+                @Model.Title
+            </p>
+            <p>
+                <strong class="text">Descrizione: </strong>
+                @Model.Description
+            </p>
+            <p>
+                <strong class="text">Categorie: </strong>
+                @if (Model.Categories != null && Model.Categories.Count > 0)
+                {
+                    <ul>
+                        @foreach (Category category in Model.Categories)
+                        {
+                            <li>@category.Name</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span> Non hai ancora Categorie associate!</span>
+                }
+            </p>
+
+            <p class="back-button mt-5">
+                <a class="btn btn-primary" href="@Url.Action("Index", "Fotoalbum")" role="button">
+                    <b>Torna Indietro</b>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
