@@ -22,14 +22,38 @@ else
             <div class="d-flex justify-content-start align-items-center mb-3">
                 <img src="~/img/logo-album.jpg" class="logo me-4" alt="Immagine logo" />
                 <h1 class="py-5 fw-bold">Il mio Foto Album</h1>
+                
             </div>
             @if (User.IsInRole("ADMIN"))
             {
                 <a class="btn btn-light btn-sm mb-3 border-4 border-primary rounded-3 mb-4" href="@Url.Action("Create", "Fotoalbum")">
                     <strong class="text-primary fs-6">Crea nuova foto</strong>
                 </a>
+                <div class="d-flex justify-content-between align-intems-center">
+                    <input id="js_search_box" type="text" class="form-control my-5 search-input" placeholder="Cerca per titolo...">
+                    <p class="back-button mt-5">
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Fotoalbum")" role="button">
+                            <b>Azzera filtro</b>
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Contenitore da renderizzare nel caso non ci siano foto o non ho foto con la query di ricerca -->
+                <div id="row-no-photos" class="row container-no-photo d-none">
+                     <div class="col-12 text-white">
+                        Nessuna foto trovata!
+                     </div> 
+                </div>
+
+                <div> 
+                      <div id="list-of-photos" class="row d-none display-flex align-items-center">
+                            
+                              <!-- questo contenitore verrà usato per mostrare le foto ricercate -->
+                      </div>
+
+                </div>
             }
-            <table class="table rounded-5">
+            <table class="table rounded-5" id="list-all-photos">
                 <thead>
                     <tr class="mt-5">
                         <th scope="col" class="color-text">Immagine</th>
@@ -111,7 +135,90 @@ else
 }
 
 @section Scripts {
-    <script>
+    <script type="text/javascript">
+
+        loadPhotos();
+        document.getElementById("js_search_box").addEventListener('keyup', searchPhotos);
+
+        function searchPhotos() {
+            let searchString = document.getElementById("js_search_box").value;
+
+            loadPhotos(searchString);
+        }
+
+        let listOfPhotosElement = document.getElementById('list-of-photos');
+        let divNoPhotos = document.getElementById('row-no-photos');
+
+        function loadPhotos(searchParam) {
+
+            console.log(searchParam);
+            if (searchParam === undefined || searchParam == '') {
+                axios.get('/api/Photos/GetPhotos');
+           } else {
+                axios.get('/api/Photos/SearchPhoto', {
+                    params: {
+                        search: searchParam
+                    }
+
+                }).then((res) => {
+                    console.log(res);
+
+                    if (res.data.length == 0) {
+                        divNoPhotos.classList.remove('d-none');
+                        listOfPhotosElement.classlist.add('d-none');
+
+                    } else {
+                        divNoPhotos.classList.add('d-none');
+                        listOfPhotosElement.classList.remove('d-none');
+
+                        listOfPhotosElement.innerHTML = "";
+
+                        res.data.forEach(photo => {
+                            console.log(photo);
+
+
+                            photo.categories.forEach(category => {
+                                listOfPhotosElement.innerHTML +=
+
+                               `
+                                <div class="category-name">
+                                   <h3 class=text-white text-center category fw-bold> Categoria associata di foto: ${category.name}</h3>
+                               </div>
+                               `
+
+                            })
+
+                            listOfPhotosElement.innerHTML +=
+                                `
+                           <div class="col-4 card-photo"> 
+                             <div class="card shadow-sm">
+                                 <img src="${photo.imageUrl}" class="card-img-top object-fit-cover" height="225" role="img" focusable="false" alt="${photo.title}" />
+                                  
+                                  <h3 class="card-text ms-3 mt-3">${photo.title}</h3>
+                                  
+                                  <p class="card-text ms-3">${photo.description}</p>
+                             </div>
+                           </div>
+                         `
+                            
+                        });
+
+                    }
+
+                });
+
+           }
+        }
+
+
+
+
+
+
+
+
+        // modale per eliminazione elemnto con conferma
+
         const deleteButtons = document.querySelectorAll('.form_delete_pizza button[type="submit"]');
 
 
@@ -129,7 +236,7 @@ else
                 confirmDeleteBtn.addEventListener('click', () => {
                     button.parentElement.submit();
                 });
-            })
+            });
         });
 
 

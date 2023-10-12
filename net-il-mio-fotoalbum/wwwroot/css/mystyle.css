@@ -76,3 +76,50 @@ footer ul li a{
     color: blue;
     font-weight: bold;
 }
+
+
+.card {
+    height: 600px;
+    width: 350px;
+    margin-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.card-photo {
+    display: block;
+    transform: scale(1);
+    transition: all .2s linear;
+    
+}
+
+.card-photo:hover {
+    transform: scale(1.1);
+    z-index: 3;
+}
+
+.category-name{
+    background-color: blue;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    padding: 7px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.container-no-photo {
+    background-color: red;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 500px;
+    margin-top: 25px;
+    padding: 7px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.search-input{
+    width: 1000px;
+}
