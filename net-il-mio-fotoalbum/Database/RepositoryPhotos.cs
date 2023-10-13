@@ -15,6 +15,8 @@ namespace net_il_mio_fotoalbum.Database
             _db = db;
         }
 
+        
+
         // implemento i Metodi creati nell' Interfaccia
         public List<Photo> GetPhotos()
         {

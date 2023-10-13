@@ -7,5 +7,7 @@ namespace net_il_mio_fotoalbum.Database
         public List<Photo> GetPhotos();
 
         public List<Photo> GetPhotosByTitle(string title);
+
+      
     }
 }

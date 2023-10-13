@@ -6,16 +6,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center align-items-center">
+                    <li>
+                        <a class="nav-link text-category fw-bold" href="@Url.Action("Index", "Category")">Categorie foto</a>
+                    </li>
                     <li>
                         <a class="nav-link text-primary fw-bold" href="@Url.Action("Index", "Home")">User</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-primary fw-bold" href="/Home/Privacy">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-primary fw-bold" href="/Home/News">News</a>
                     </li>
 
                     <partial name="_LoginPartial" />

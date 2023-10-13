@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@section Style{
+    <link rel="stylesheet" href="~/css/mystyle.css" />
+}
+
+@using net_il_mio_fotoalbum.Models;
+@using net_il_mio_fotoalbum.Models.Database_Models;
+@model List<Category>
+
+
+@if (Model.Count() == 0)
+{
+    <h3>Non ci sono categorie da mostrare</h3>
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-start align-items-center mb-3">
+                <img src="~/img/logo-album.jpg" class="logo me-4" alt="Immagine logo" />
+                <h1 class="py-5 fw-bold">Le mie Categorie di foto</h1>
+
+            </div>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <a class="btn btn-light btn-sm mb-3 border-4 border-primary rounded-3 mb-4" href="@Url.Action("Create", "Category")">
+                    <strong class="text-primary fs-6">Crea nuova categoria</strong>
+                </a>
+                
+            }
+            <table class="table rounded-5 w-30" id="list-all-photos">
+                <thead>
+                    <tr class="mt-5 ">
+                        <th scope="col" class="color-text">ID</th>
+                        <th scope="col" class="color-text">Categoria</th>
+                        <th scope="col" class="text-center color-text">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Category category in Model)
+                    {
+                        <tr>
+                            <td>@category.Id</td>
+                            <td>@category.Name</td>
+                           
+                            <td class="d-flex justify-content-center align-items-center">
+                                @if (User.IsInRole("ADMIN"))
+                                {
+                                    <a class="btn btn-info btn-sm me-2 text-white" href="@Url.Action("Details", "Category", new { id = category.Id })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    </a>
+                                    <a class="btn btn-secondary btn-sm me-2 text-white" href="@Url.Action("Update", "Category", new { id = category.Id })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
+                                    </a>
+                                    <form asp-controller="Category" class="form_delete_pizza" asp-action="Delete" asp-route-id="@category.Id" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                        </button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Modale per la conferma eliminazione -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma eliminazione</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confermi di voler eliminare l'elemento selezionato?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger">Conferma eliminazione</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        // modale per eliminazione elemento con conferma
+
+        const deleteButtons = document.querySelectorAll('.form_delete_pizza button[type="submit"]');
+
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+
+                const modal = document.getElementById('confirmModal');
+
+                const bootstrapModal = new bootstrap.Modal(modal);
+                bootstrapModal.show();
+
+                const confirmDeleteBtn = modal.querySelector('.btn.btn-danger')
+
+                confirmDeleteBtn.addEventListener('click', () => {
+                    button.parentElement.submit();
+                });
+            });
+        });
+
+    </script>
+
+}
+
+

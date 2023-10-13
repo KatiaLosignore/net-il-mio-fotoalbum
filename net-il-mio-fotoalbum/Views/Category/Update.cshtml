@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_LayoutCategory";
+}
+
+@section StyleCategory{
+    <link rel="stylesheet" href="~/css/mycategory.css" />
+}
+
+
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model Category
+
+
+<div class="container">
+    <div class="row py-3">
+        <div class="col-12">
+            <h1 class="text-center py-3 text my-5">Modifica categoria</h1>
+        </div>
+        
+        <form asp-controller="Category" asp-action="Update" asp-route-itemid="@Model.Id" method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="@Model.Id" />
+
+            <div class="mb-3">
+                <strong class="text mb-3">Nome categoria: </strong>
+                <input type="text" class="form-control" asp-for="@Model.Name" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary fw-bold me-2"> Aggiorna Categoria </button>
+         
+                <a class="btn btn-secondary fw-bold" href="@Url.Action("Index", "Category")">Indietro </a>
+            </div>
+        </form>
+    </div>
+</div>

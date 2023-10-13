@@ -26,8 +26,11 @@ else
             </div>
             @if (User.IsInRole("ADMIN"))
             {
-                <a class="btn btn-light btn-sm mb-3 border-4 border-primary rounded-3 mb-4" href="@Url.Action("Create", "Fotoalbum")">
+                <a class="btn btn-light btn-sm mb-3 border-4 border-primary rounded-3 mb-4 me-4" href="@Url.Action("Create", "Fotoalbum")">
                     <strong class="text-primary fs-6">Crea nuova foto</strong>
+                </a>
+                <a class="btn btn-light btn-sm mb-3 border-4 border-primary rounded-3 mb-4" href="@Url.Action("Create", "Category")">
+                    <strong class="text-primary fs-6">Crea nuova categoria</strong>
                 </a>
                 <div class="d-flex justify-content-between align-intems-center">
                     <input id="js_search_box" type="text" class="form-control my-5 search-input" placeholder="Cerca per titolo...">

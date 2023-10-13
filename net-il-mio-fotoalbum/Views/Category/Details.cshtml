@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_LayoutCategory";
+}
+
+@section StyleCategory{
+    <link rel="stylesheet" href="~/css/mycategory.css" />
+}
+
+
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model Category
+
+<div class="card mt-5">
+  <div class="card-header details-category text-center py-5 text">
+      Dettaglio Categoria 
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center text detail mt-4">ID: @Model.Id</h5>
+    <p class="card-text text-center text detail">@Model.Name </p>
+    <a class="btn btn-secondary fw-bold mt-5" href="@Url.Action("Index", "Category")"> Indietro </a>
+  </div>
+</div>
+
+

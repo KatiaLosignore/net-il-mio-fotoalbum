@@ -58,6 +58,11 @@ tbody, td, tfoot, th, thead, tr {
     border-radius: 15px;
 }
 
+.text-category{
+    color: blue;
+    font-size: 18px;
+}
+
 footer {
     height: 100px;
     background-color: rgb(248,249,250);
@@ -69,7 +74,7 @@ footer ul li a{
 
 .text-color {
     color: blue;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 .text {

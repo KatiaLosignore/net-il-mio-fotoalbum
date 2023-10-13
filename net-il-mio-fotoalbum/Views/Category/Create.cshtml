@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_LayoutCategory";
+}
+
+@section StyleCategory{
+    <link rel="stylesheet" href="~/css/mycategory.css" />
+}
+
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model Category
+
+<div class="container">
+    <div class="row py-3">
+        <div class="col-12">
+            <h1 class="text-center py-5 text">Creazione nuova categoria</h1>
+        </div>
+        
+        <form asp-controller="Category" asp-action="Create" method="post">
+
+            @Html.AntiForgeryToken()
+
+            
+            <div class="mb-4">
+                <strong class="text">Nome categoria:</strong>
+                <input type="text" class="form-control" asp-for="@Model.Name" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary me-3 fw-bold"> Crea Categoria </button>
+           
+            <a class="btn btn-secondary fw-bold" href="@Url.Action("Index", "Category")"> Indietro </a>
+        </form>
+    </div>
+</div>
+
+

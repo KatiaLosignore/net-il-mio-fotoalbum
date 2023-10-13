@@ -30,6 +30,8 @@ namespace net_il_mio_fotoalbum.Controllers.Api
 
         }
 
+      
+
 
         [HttpGet]
         public IActionResult SearchPhoto(string? search)

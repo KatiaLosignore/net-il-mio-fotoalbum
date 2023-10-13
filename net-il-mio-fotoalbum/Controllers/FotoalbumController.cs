@@ -260,6 +260,7 @@ namespace net_il_mio_fotoalbum.Controllers
         }
 
 
+        // Metodo per il File Image
         private void SetImageFileFromFormFile(PhotoFormModel formData)
         {
             if (formData.ImageFormFile == null)
