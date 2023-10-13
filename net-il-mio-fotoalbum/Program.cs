@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("FotoalbumContextConnection") ?? throw new InvalidOperationException("Connection string 'FotoalbumContextConnection' not found.");
+//var connectionString = builder.Configuration.GetConnectionString("FotoalbumContextConnection") ?? throw new InvalidOperationException("Connection string 'FotoalbumContextConnection' not found.");
 
 
 builder.Services.AddDbContext<FotoalbumContext>();

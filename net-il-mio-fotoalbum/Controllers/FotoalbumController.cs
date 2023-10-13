@@ -79,9 +79,11 @@ namespace net_il_mio_fotoalbum.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(PhotoFormModel newPhoto)
         {
-            if (newPhoto.Photo.ImageUrl == null)
+            
+            if (newPhoto.Photo.ImageUrl == null && newPhoto.ImageFormFile == null)
             {
                 newPhoto.Photo.ImageUrl = "/img/default.jpg";
+                
             }
             if (!ModelState.IsValid)
             {

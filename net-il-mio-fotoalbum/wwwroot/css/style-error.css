@@ -1,0 +1,17 @@
+﻿* {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+body {
+    background-image: url('/img/vettoriale.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 50px;
+}
+
+header nav {
+    height: 100px;
+{
