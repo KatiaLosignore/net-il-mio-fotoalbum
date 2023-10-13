@@ -31,10 +31,10 @@ else
                 </a>
                 
             }
-            <table class="table rounded-5 w-30" id="list-all-photos">
+            <table class="table rounded-5" id="list-all-photos">
                 <thead>
-                    <tr class="mt-5 ">
-                        <th scope="col" class="color-text">ID</th>
+                    <tr class="mt-5">
+                        <th scope="col" class="color-text id-category">ID</th>
                         <th scope="col" class="color-text">Categoria</th>
                         <th scope="col" class="text-center color-text">Azioni</th>
                     </tr>
@@ -44,7 +44,7 @@ else
                     @foreach (Category category in Model)
                     {
                         <tr>
-                            <td>@category.Id</td>
+                            <td class="id-category">@category.Id</td>
                             <td>@category.Name</td>
                            
                             <td class="d-flex justify-content-center align-items-center">

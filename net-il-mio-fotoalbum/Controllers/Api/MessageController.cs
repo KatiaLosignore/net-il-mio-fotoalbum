@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+
 using net_il_mio_fotoalbum.Database;
+using net_il_mio_fotoalbum.Models.Database_Models;
 
 namespace net_il_mio_fotoalbum.Controllers.Api
 {
