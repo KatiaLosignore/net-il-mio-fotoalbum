@@ -1,3 +1,23 @@
-﻿
+﻿@{
+    Layout = "_LayoutUser";
+}
+
+@section StyleUser{
+    <link rel="stylesheet" href="~/css/myuser.css" />
+}
+
+
+<div class="container">
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1>Benvenuti nella mia piattaforma di Foto Album</h1>
+        <p class="back-button mt-5">
+            <a class="btn btn-outline-secondary mt-5" href="@Url.Action("Details", "Home")" role="button">
+                <b>Clicca qui per accedere</b>
+            </a>
+        </p>
+
+    </div>
+</div>
 
 

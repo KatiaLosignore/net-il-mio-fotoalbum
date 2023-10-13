@@ -1,0 +1,133 @@
+﻿@{
+    Layout = "_LayoutUser";
+}
+
+@section StyleUser{
+    <link rel="stylesheet" href="~/css/myuser.css" />
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-secondary fw-bold text-center title">Lista delle foto disponibili</h1>
+        <div>
+            <input id="js_search_box" type="text" class="form-control my-3" placeholder="Cerca per titolo...">
+        </div>
+    </div>
+</div>
+
+<div id="loading-spinner" class="row">
+    <div class="col-12">
+        <div class="spinner-border" role="status">
+        </div>
+        <span class="text-secondary fw-bold">Caricamento foto...</span>
+    </div>
+</div>
+
+
+
+<!-- Contenitore da renderizzare nel caso non ci siano pizze o non ho pizze con la query di ricerca -->
+<div id="row-no-photo" class="row d-none">
+    <div class="col-12 text-danger fw-bold">
+        Nessuna foto trovata!
+    </div>
+</div>
+
+<div class="album py-4 rounded-5">
+    <div class="container">
+       
+        <div>
+            <div id="list-of-photos" class="row d-none display-flex align-items-center">
+
+                <!-- questo sontenitore verrà usato per mostrare le pizze ricercati -->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+    @section Scripts {
+
+        <script type="text/javascript">
+
+
+            loadPhotos();
+
+            document.getElementById("js_search_box").addEventListener('keyup', searchPhotos);
+
+            function searchPhotos() {
+                let searchString = document.getElementById("js_search_box").value;
+
+                loadPhotos(searchString);
+            }
+
+
+            function loadPhotos(searchParam) {
+
+                
+                    axios.get('/api/Photos/SearchPhoto', {
+                        params: {
+                            search: searchParam
+                        }
+                    }).then((res) => {
+                        console.log(res);
+                        let divNoPhotos = document.getElementById('row-no-photo')
+                        let loadinSpinnerElement = document.getElementById("loading-spinner");
+                        let listOfPhotosElement = document.getElementById('list-of-photos');
+
+                        //debugger;
+
+                        if (res.data.length == 0) {
+
+                            divNoPhotos.classList.remove('d-none');
+                            loadinSpinnerElement.classList.add("d-none");
+                            listOfPhotosElement.classList.add("d-none");
+
+                        } else {
+                            loadinSpinnerElement.classList.add("d-none");
+                            listOfPhotosElement.classList.remove("d-none");
+                            divNoPhotos.classList.add('d-none');
+
+                            listOfPhotosElement.innerHTML = "";
+
+
+                            res.data.forEach(photo => {
+                                console.log(photo);
+                                // mostro solo le foto visibili
+                                if (photo.visible == true) {
+
+                                    listOfPhotosElement.innerHTML +=
+                                        `<div class="col-4 card-photo">
+                                          <div class="card shadow-sm">
+                                               <img src="${photo.imageSrc}" class="card-img-top object-fit-cover" height="360" role="img" focusable="false" alt="${photo.title}" />
+                                               <div class="card-body">
+                                                     <h3 class="card-text">${photo.title}</h3>
+                                                     <p class="card-text mb-3">${photo.description}</p>
+                                               </div>
+                                          </div>
+                                      </div>
+
+                                     `;
+
+                                }
+
+                            });
+
+                        }
+
+                    })
+
+            
+            }
+
+
+
+
+
+        </script>
+
+    }

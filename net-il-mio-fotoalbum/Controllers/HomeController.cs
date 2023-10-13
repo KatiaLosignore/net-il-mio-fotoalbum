@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using net_il_mio_fotoalbum.CustomLoggers;
+using net_il_mio_fotoalbum.Database;
 using net_il_mio_fotoalbum.Models;
 using System.Diagnostics;
 
@@ -6,14 +8,26 @@ namespace net_il_mio_fotoalbum.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        // Custom Logger
+        private ICustomLogger _myLogger;
 
-        public HomeController(ILogger<HomeController> logger)
+        // Collegamento al DataBase con la Dependency Injection
+        private FotoalbumContext _myDatabase;
+
+        public HomeController(FotoalbumContext db, ICustomLogger logger)
         {
-            _logger = logger;
+            _myLogger = logger;
+            _myDatabase = db;
         }
 
         public IActionResult Index()
+        {
+            _myLogger.WriteLog("L'utente è arrivato sulla pagina Home > Index");
+
+            return View();
+        }
+
+        public IActionResult Details()
         {
             return View();
         }
