@@ -9,25 +9,31 @@ body {
     background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;  
-    margin-top: 610px;
+    margin-top: 605px;
 }
 
 
-h1 {
+.welcome {
     color: rgb(203,161,99);
     font-weight: bold;
     font-size: 43px;
-    margin-top: 25px;
     margin-bottom: 80px;
 }
 
-
-.album {
-    background-color: rgb(217,194,123);
-    padding-top: 15px;
-    width: 1350px;
+.contact {
+    color: rgb(203,161,99);
+    font-weight: bold;
 }
 
+.album {
+   background-color: rgb(217,194,123);
+   padding-top: 15px;
+   width: 1350px;
+}
+
+.title {
+   font-size: 45px;
+}
 
 .card {
     height: 630px;
@@ -49,5 +55,6 @@ h1 {
    z-index: 3;
 }
 
-
-
+.form-message{
+    width: 1120px;
+}

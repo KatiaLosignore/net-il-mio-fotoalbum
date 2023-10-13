@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="row py-3">
-        <div class="col-12">
+        <div class="col-10">
             <h1 class="text-center py-5 text">Creazione nuova categoria</h1>
         </div>
         
@@ -22,7 +22,7 @@
             @Html.AntiForgeryToken()
 
             
-            <div class="mb-4">
+            <div class="mb-4 col-10">
                 <strong class="text">Nome categoria:</strong>
                 <input type="text" class="form-control" asp-for="@Model.Name" />
                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
