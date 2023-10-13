@@ -9,14 +9,16 @@ body {
     background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;  
-    margin-top: 620px;
+    margin-top: 550px;
 }
 
 
 h1 {
     color: rgb(203,161,99);
     font-weight: bold;
-    font-size: 48px;
+    font-size: 50px;
+    margin-top: 25px;
+    margin-bottom: 80px;
 }
 
 
@@ -34,10 +36,6 @@ h1 {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-}
-
-.card-photo {
-    position: relative;
 }
 
 .card-photo {

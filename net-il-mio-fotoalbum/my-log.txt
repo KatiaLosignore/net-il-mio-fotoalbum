@@ -939,3 +939,5 @@
 13-10-2023 10:50:32 LOG: L'utente è arrivato sulla pagina Home > Index
 13-10-2023 11:03:38 LOG: L'utente è arrivato sulla pagina Fotoalbum > Index
 13-10-2023 11:03:41 LOG: L'utente è arrivato sulla pagina Home > Index
+13-10-2023 11:40:13 LOG: L'utente è arrivato sulla pagina Home > Index
+13-10-2023 11:43:17 LOG: L'utente è arrivato sulla pagina Home > Index
