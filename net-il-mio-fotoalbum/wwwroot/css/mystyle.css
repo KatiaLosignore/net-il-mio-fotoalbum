@@ -84,7 +84,7 @@ footer ul li a{
 
 
 .card {
-    height: 600px;
+    height: 560px;
     width: 350px;
     margin-bottom: 20px;
     border-top-left-radius: 20px;
@@ -117,7 +117,7 @@ footer ul li a{
 .container-no-photo {
     background-color: red;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 65px;
     width: 500px;
     margin-top: 25px;
     padding: 7px;

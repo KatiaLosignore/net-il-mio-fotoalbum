@@ -32,7 +32,9 @@ body {
 }
 
 .title {
-   font-size: 45px;
+   font-size: 50px;
+   margin-top: 40px;
+   margin-bottom: 60px;
 }
 
 .card {
@@ -57,4 +59,12 @@ body {
 
 .form-message{
     width: 1120px;
+}
+
+.no-photo{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 300px;
 }
