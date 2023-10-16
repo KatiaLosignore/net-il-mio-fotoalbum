@@ -179,32 +179,29 @@ else
                         res.data.forEach(photo => {
                             console.log(photo);
 
-
+                            /*
                             photo.categories.forEach(category => {
                                 listOfPhotosElement.innerHTML +=
 
                                `
                                 <div class="category-name">
                                    <h3 class=text-white text-center category fw-bold> Categoria di foto associata: ${category.name}</h3>
-                               </div>
-                               `
-
-
+                               </div>                           
                             })
-
+                            */
                             listOfPhotosElement.innerHTML +=
-                                `
+                          `
                            <div class="col-4 card-photo"> 
                              <div class="card shadow-sm">
                                  <img src="${photo.imageSrc}" class="card-img-top object-fit-cover" height="300" role="img" focusable="false" alt="${photo.title}" />
-                                  
-                                  <h3 class="card-text ms-3 mt-3">${photo.title}</h3>
-                                  
-                                  <p class="card-text ms-3">${photo.description}</p>
+                                  <div class=card-body text-center">
+                                       <h3 class="card-text mb-3 fw-bold">Categoria: ${photo.categories.map(category => category.name).join(", ")}</h3>
+                                       <h3 class="card-text">${photo.title}</h3>
+                                       <p class="card-text mb-3">${photo.description}</p>
+                                  </div>
                              </div>
                            </div>
-                         `
-                            
+                         `                            
                         });
 
                     }
