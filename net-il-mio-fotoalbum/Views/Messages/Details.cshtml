@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_LayoutDetails";
+}
+
+@section StyleDetails{
+    <link rel="stylesheet" href="~/css/mydetails.css" />
+}
+
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model Message
+
+
+<div class="card mt-5 col-12">
+    <div class="card-header details-message text-center py-5 text">
+        Dettaglio Messaggio
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center text detail size-text mt-4 mb-3">ID: @Model.Id</h5>
+        <p class="card-text text-center text size-text">Email: @Model.Email</p>
+        <p class="card-text text-center text size-text">Messaggio: @Model.MessageText</p>
+        <a class="btn btn-secondary fw-bold mt-5" href="@Url.Action("Index", "Messages")"> Indietro </a>
+    </div>
+</div>
