@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@section Style{
+    <link rel="stylesheet" href="~/css/mystyle.css" />
+}
+
+
+@using net_il_mio_fotoalbum.Models;
+@using net_il_mio_fotoalbum.Models.Database_Models;
+
+@model List<Message>
+
+
+
+@if (Model.Count() == 0)
+{
+    <h3>Non ci sono messaggi ricevuti</h3>
+}
+else
+{
+    
+        <div class="col-10">
+            <div class="d-flex justify-content-start align-items-center mb-3">
+                <img src="~/img/logo-album.jpg" class="logo me-4" alt="Immagine logo" />
+                <h1 class="py-5 fw-bold">I miei messaggi</h1>
+
+            </div>
+
+            <table class="table rounded-5">
+                <thead>
+                    <tr class="mt-5">
+                        <th scope="col" class="text-color text-primary">ID</th>
+                        <th scope="col" class="text-color text-primary">Email</th>
+                        <th scope="col" class="text-color text-primary">Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Message message in Model)
+                    {   
+                       <tr>
+                            <td class="fw-normal">@message.Id</td>
+                            <td class="fw-normal">@message.Email</td>
+                            <td class="fw-normal">@message.MessageText</td>
+                       </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+}

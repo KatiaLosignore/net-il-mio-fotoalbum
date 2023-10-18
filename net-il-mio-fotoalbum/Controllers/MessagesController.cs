@@ -5,13 +5,14 @@ using net_il_mio_fotoalbum.Models.Database_Models;
 
 namespace net_il_mio_fotoalbum.Controllers
 {
-    public class MessageController : Controller
+    public class MessagesController : Controller
     {
+
         private ICustomLogger _myLogger;
 
         private FotoalbumContext _myDatabase;
 
-        public MessageController(FotoalbumContext db, ICustomLogger logger)
+        public MessagesController(FotoalbumContext db, ICustomLogger logger)
         {
             _myDatabase = db;
             _myLogger = logger;
@@ -23,7 +24,8 @@ namespace net_il_mio_fotoalbum.Controllers
 
             List<Message> messages = _myDatabase.Messages.ToList<Message>();
 
-            return View("Index", messages);
+            return View("Index",messages);
         }
     }
+    
 }
