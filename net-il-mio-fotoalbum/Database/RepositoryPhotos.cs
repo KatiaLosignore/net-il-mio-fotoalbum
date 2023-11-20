@@ -15,7 +15,22 @@ namespace net_il_mio_fotoalbum.Database
             _db = db;
         }
 
-        
+        public Photo GetPhotoById(int id)
+        {
+            Photo? photo = _db.Photos.Where(photo => photo.Id == id)
+                               .Include(photo => photo.Categories).FirstOrDefault();
+
+            if (photo != null)
+            {
+                return photo;
+            }
+            else
+            {
+                throw new Exception("La foto non è stata trovata!");
+            }
+        }
+
+
 
         // implemento i Metodi creati nell' Interfaccia
         public List<Photo> GetPhotos()
@@ -30,5 +45,7 @@ namespace net_il_mio_fotoalbum.Database
 
             return foundedPhotos;
         }
+
+        
     }
 }

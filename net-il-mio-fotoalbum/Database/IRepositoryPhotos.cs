@@ -8,6 +8,6 @@ namespace net_il_mio_fotoalbum.Database
 
         public List<Photo> GetPhotosByTitle(string title);
 
-      
+        public Photo GetPhotoById(int id);
     }
 }

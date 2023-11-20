@@ -8,6 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("FotoalbumContextConnection") ?? throw new InvalidOperationException("Connection string 'FotoalbumContextConnection' not found.");
 //var connectionString = builder.Configuration.GetConnectionString("FotoalbumContextConnection") ?? throw new InvalidOperationException("Connection string 'FotoalbumContextConnection' not found.");
 
+builder.Services.AddCors(o => // https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-7.0
+{
+    o.AddDefaultPolicy(policy =>
+    {
+        policy.WithMethods("POST", "PUT", "GET", "OPTIONS");
+        policy.WithOrigins("http://localhost:5173");
+        policy.AllowAnyOrigin();
+        policy.AllowAnyHeader();
+    });
+});
+
 
 builder.Services.AddDbContext<FotoalbumContext>();
 
@@ -44,6 +55,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthentication();
 

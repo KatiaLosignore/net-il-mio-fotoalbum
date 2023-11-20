@@ -30,8 +30,6 @@ namespace net_il_mio_fotoalbum.Controllers.Api
 
         }
 
-      
-
 
         [HttpGet]
         public IActionResult SearchPhoto(string? search)
@@ -48,6 +46,23 @@ namespace net_il_mio_fotoalbum.Controllers.Api
             }
 
             return Ok(foundedPhotos);
+
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult PhotoById(int id)
+        {
+            Photo photo = _repoPhotos.GetPhotoById(id);
+
+            if (photo != null)
+            {
+                return Ok(photo);
+            }
+            else
+            {
+                return NotFound();
+            }
 
         }
 

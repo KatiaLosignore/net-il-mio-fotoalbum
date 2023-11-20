@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.button-user {
+    width: 140px;
+    height: 36px;
+    border: 3px solid grey;
+    border-radius: 10px;
+}
+
+.button-user:hover {
+    background-color: rgb(224,255,255);
+}

@@ -1,26 +1,31 @@
 ﻿<header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold text-color" href="@Url.Action("Index", "Fotoalbum")">Il mio Foto Album</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center align-items-center">
+                <ul class="navbar-nav me-auto mb-lg-0 d-flex justify-content-center align-items-start">
                     <li>
-                        <a class="nav-link text-category fw-bold" href="@Url.Action("Index", "Category")">Categorie foto</a>
+                        <a class="navbar-brand fw-bold text-color fs-3" href="@Url.Action("Index", "Fotoalbum")">Il mio Foto Album</a>
                     </li>
                     <li>
-                        <a class="nav-link text-primary fw-bold" href="@Url.Action("Index", "Home")">User</a>
+                        <a class="nav-link  text-primary fw-bold fs-5" href="@Url.Action("Index", "Category")">Categorie foto</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-primary fw-bold" href="@Url.Action("Index", "Messages")">Messages</a>
+                        <a class="nav-link text-primary fw-bold fs-5" href="@Url.Action("Index", "Messages")">Messaggi</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-primary fw-bold fs-5" href="@Url.Action("Index", "Home")">Utente</a>
                     </li>
 
-                    <partial name="_LoginPartial" />
-
+                    <div class="ms-5 mt-1">
+                        <partial name="_LoginPartial" />
+                    </div>
                 </ul>
+
+                <div class="fs-5">
+                    <button class="button-user"><a class="nav-link text-secondary fw-bold" href='http://localhost:5174/'> Sito Utente </a></button>
+                </div>
 
             </div>
         </div>

@@ -49,8 +49,10 @@ namespace net_il_mio_fotoalbum.Models.Database_Models
             this.ImageUrl = image;
         }
 
-
-
+        internal Photo? Include(Func<object, object> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
