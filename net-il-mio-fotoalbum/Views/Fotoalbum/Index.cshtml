@@ -149,14 +149,16 @@ else
             loadPhotos(searchString);
         }
 
+        let table = document.getElementById('list-all-photos');
         let listOfPhotosElement = document.getElementById('list-of-photos');
         let divNoPhotos = document.getElementById('row-no-photos');
 
         function loadPhotos(searchParam) {
 
             console.log(searchParam);
-            if (searchParam === undefined || searchParam == '') {
+            if (searchParam === undefined || searchParam === '') {
                 axios.get('/api/Photos/GetPhotos');
+                
            } else {
                 axios.get('/api/Photos/SearchPhoto', {
                     params: {
@@ -165,17 +167,20 @@ else
 
                 }).then((res) => {
                     console.log(res);
+                  
 
                     if (res.data.length == 0) {
                         divNoPhotos.classList.remove('d-none');
+                        listOfPhotosElement.innerHTML = "";
                         listOfPhotosElement.classlist.add('d-none');
 
                     } else {
      
                         divNoPhotos.classList.add('d-none');
                         listOfPhotosElement.classList.remove('d-none');
-
                         listOfPhotosElement.innerHTML = "";
+                        table.classList.add('d-none');
+
                        
                         res.data.forEach(photo => {
                             console.log(photo);
@@ -196,8 +201,8 @@ else
                              <div class="card shadow-sm">
                                  <img src="${photo.imageSrc}" class="card-img-top object-fit-cover" height="300" role="img" focusable="false" alt="${photo.title}" />
                                   <div class="card-body text-center">
-                                       <h3 class="card-text mb-3 fw-bold">Categoria: ${photo.categories.map(category => category.name).join(", ")}</h3>
-                                       <h3 class="card-text">${photo.title}</h3>
+                                       <h3 class="card-text text-primary fw-bold">${photo.title}</h3>
+                                       <h5 class="card-text mb-3 mt-3 fw-bold">Categoria: ${photo.categories.map(category => category.name).join(", ")}</h5>
                                        <p class="card-text mb-3">${photo.description}</p>
                                   </div>
                              </div>

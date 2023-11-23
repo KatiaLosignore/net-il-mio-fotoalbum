@@ -15,6 +15,7 @@ namespace net_il_mio_fotoalbum.Database
             _db = db;
         }
 
+        // implemento i Metodi creati nell' Interfaccia
         public Photo GetPhotoById(int id)
         {
             Photo? photo = _db.Photos.Where(photo => photo.Id == id)
@@ -31,8 +32,6 @@ namespace net_il_mio_fotoalbum.Database
         }
 
 
-
-        // implemento i Metodi creati nell' Interfaccia
         public List<Photo> GetPhotos()
         {
             List<Photo> photos = _db.Photos.Include(photo => photo.Categories).ToList();

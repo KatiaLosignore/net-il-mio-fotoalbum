@@ -42,13 +42,14 @@
     </div>
 </div>
 
-<div class="album py-4 rounded-5">
+<div class="album py-4 rounded-5" id="album-container">
     <div class="container">
        
         <div>
             <div id="list-of-photos" class="row d-none display-flex align-items-center">
 
                 <!-- questo sontenitore verrà usato per mostrare le pizze ricercati -->
+          
             </div>
 
         </div>
@@ -74,6 +75,7 @@
                 loadPhotos(searchString);
             }
 
+            let container = document.getElementById("album-container");
 
             function loadPhotos(searchParam) {
 
@@ -95,8 +97,10 @@
                             divNoPhotos.classList.remove('d-none');
                             loadinSpinnerElement.classList.add("d-none");
                             listOfPhotosElement.classList.add("d-none");
+                            container.classList.add("d-none");
 
                         } else {
+                            container.classList.remove("d-none");
                             loadinSpinnerElement.classList.add("d-none");
                             listOfPhotosElement.classList.remove("d-none");
                             divNoPhotos.classList.add('d-none');
@@ -112,11 +116,12 @@
                                     listOfPhotosElement.innerHTML +=
                                         `<div class="col-4 card-photo">
                                               <div class="card shadow-sm">
-                                                   <img src="${photo.imageSrc}" class="card-img-top object-fit-cover" height="320" role="img" focusable="false" alt="${photo.title}" />
+                                                   <img src="${photo.imageSrc}" class="card-img-top" height="320" role="img" focusable="false" alt="${photo.title}" />
                                                    <div class="card-body">
-                                                         <h3 class="card-text mb-3 fw-bold">Categoria: ${photo.categories.map(category => category.name).join(", ")}</h3>
-                                                         <h3 class="card-text">${photo.title}</h3>
+                                                         <h3 class="card-text mb-3 fw-bold">${photo.title}</h3>
+                                                         <h5 class="card-text mb-3">Categoria: ${photo.categories.map(category => category.name).join(", ")}</h5>
                                                          <p class="card-text mb-3">${photo.description}</p>
+
                                                    </div>
                                               </div>
                                          </div>
@@ -134,8 +139,7 @@
             
             }
 
-
-
+      
 
 
         </script>
